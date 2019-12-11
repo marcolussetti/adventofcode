@@ -64,7 +64,7 @@ def intcode(program: List[int], inputs: List[int] = [], perpetual_input: bool = 
                 print(p[variables[0]])
             i += 2
             if loop_mode:
-                return p.copy(), i, outputs
+                return outputs, p.copy(), i
         elif op == 5:  # Jump-if-true
             i = variables[1] if variables[0] else i + 3
         elif op == 6:  # Jump-if-false
@@ -111,7 +111,9 @@ def looping_intcodes(program: List[int], phases: List[int]):
             outputs, amp_p, amp_i = intcode(program, program_input, perpetual_input=True,
                                             loop_mode=True, print_outputs=False, i=i)
             if outputs is not None:
-                result = outputs[-1]
+                output = outputs[-1]
+                result = output
+                # print(result)
             if amp_i == -1:
                 amps_active.remove(amp)
             else:
