@@ -22,13 +22,16 @@ func main() {
 
 	for _, integer := range integers {
 		for _, innerInt := range integers {
-			if integer == innerInt {
-				continue
-			}
+			for _, evenInnerInt := range integers {
+				if integer == innerInt || integer == evenInnerInt || evenInnerInt == innerInt {
+					continue
+				}
 
-			if integer + innerInt == target {
-				fmt.Printf("%v+%v=%v, %v*%v=%v\n", integer, innerInt, integer+innerInt, integer, innerInt, integer*innerInt)
-				break
+				if integer+innerInt+evenInnerInt == target {
+					fmt.Printf("%v+%v+%v=%v, %v*%v*%v=%v\n", integer, innerInt, evenInnerInt,
+						integer+innerInt+evenInnerInt, integer, innerInt, evenInnerInt, integer*innerInt*evenInnerInt)
+					break
+				}
 			}
 		}
 	}
