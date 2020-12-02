@@ -32,10 +32,12 @@ func main() {
 	trailingFlags := flag.Args()
 
 	if *day < 0 || *day > len(functions) {
-		print("Invalid day.")
+		fmt.Println("Invalid day.")
+		os.Exit(1)
 	}
-	if *part <= 0 || *part < len(functions[*day]) {
-		print("Invalid part.")
+	if *part <= 0 || *part > len(functions[*day - 1]) {
+		fmt.Println("Invalid part.")
+		os.Exit(1)
 	}
 
 	data := loadFileWithFallback(*inputPath, *day, *part)
