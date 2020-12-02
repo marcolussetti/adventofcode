@@ -31,7 +31,6 @@ func loadFile(path string) string {
 	return ""
 }
 
-
 func loadFileWithFallback(path string, day int, part int) string {
 	const basePath = "inputs"
 

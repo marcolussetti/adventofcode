@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-var functions = [][]func(string, []string) string {
+var functions = [][]func(string, []string) string{
 	{day1part1, day1part2},
 }
 
