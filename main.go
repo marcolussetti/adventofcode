@@ -7,10 +7,6 @@ import (
 	"strings"
 )
 
-const (
-	CurrentDay = 1
-)
-
 var functions = [][]func(string, []string) string {
 	{day1part1, day1part2},
 }
@@ -30,15 +26,15 @@ func main() {
 	// CLI flags
 	day := flag.Int("day", 1, "Day of Advent of code")
 	part := flag.Int("part", 2, "Part of the day")
-	inputPath := flag.String("path", "", "Path to input file")
+	inputPath := flag.String("path", "", "Path to input file. Optional, will try for inputs/day1.txt or inputs/day1part1.txt otherwise.")
 	flag.Parse()
 
 	trailingFlags := flag.Args()
 
-	if *day < 0 || *day > CurrentDay {
+	if *day < 0 || *day > len(functions) {
 		print("Invalid day.")
 	}
-	if *part != 1 && *part != 2 {
+	if *part <= 0 || *part < len(functions[*day]) {
 		print("Invalid part.")
 	}
 
