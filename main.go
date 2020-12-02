@@ -9,6 +9,7 @@ import (
 
 var functions = [][]func(string, []string) string{
 	{day1part1, day1part2},
+	{day2part1, day2part2},
 }
 
 func invokeFunction(day int, part int, input string, trailingArgs []string) bool {
